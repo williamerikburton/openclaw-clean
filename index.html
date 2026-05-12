@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Setup - Inbox Optin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+        
+        /* HEADER */
+        .header {
+            background: #1a1a1a;
+            padding: 16px 24px;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+        
+        /* HERO */
+        .hero {
+            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            padding: 80px 24px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #dc2626;
+            color: #ffffff;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .hero-cta:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+        }
+        
+        /* MAIN CONTENT */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* PACKAGES */
+        .packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 64px;
+        }
+        
+        .package {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 40px 32px;
+            position: relative;
+        }
+        
+        .package.featured {
+            background: #1a1a1a;
+            color: #ffffff;
+            border-color: #1a1a1a;
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #dc2626;
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .package-name {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+        
+        .package.featured .package-name {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .package-price {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .package-price span {
+            font-size: 16px;
+            font-weight: 500;
+            color: #64748b;
+        }
+        
+        .package.featured .package-price span {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .package-description {
+            font-size: 15px;
+            color: #64748b;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .package.featured .package-description {
+            color: rgba(255, 255, 255, 0.7);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .package.featured .package-features li {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: 700;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: #dc2626;
+            color: #ffffff;
+        }
+        
+        .btn-primary:hover {
+            background: #b91c1c;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #1a1a1a;
+            border: 2px solid #1a1a1a;
+        }
+        
+        .btn-outline:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .package.featured .btn-outline {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        
+        .package.featured .btn-outline:hover {
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+        
+        /* FORM */
+        .form-section {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 48px;
+        }
+        
+        .form-title {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 8px;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            background: #ffffff;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* GUARANTEE */
+        .guarantee {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        
+        .guarantee-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        
+        .guarantee-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #065f46;
+            margin-bottom: 4px;
+        }
+        
+        .guarantee-content p {
+            font-size: 14px;
+            color: #047857;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: #1a1a1a;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 40px 24px;
+            text-align: center;
+        }
+        
+        .footer p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">Inbox Optin</a>
+            <nav class="nav-links">
+                <a href="#packages">Services</a>
+                <a href="#book">Book Now</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>OpenClaw Setup</h1>
+            <p class="hero-subtitle">Get your AI-powered business operations running in 48 hours. We handle the technical setup so you can focus on growing your business.</p>
+            <a href="#packages" class="hero-cta">View Services →</a>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main class="container">
+        <!-- PACKAGES -->
+        <section id="packages">
+            <h2 class="section-title">Choose Your Setup</h2>
+            <p class="section-subtitle">Select the package that fits your needs. Both include full setup and 7-day support.</p>
+            
+            <div class="packages">
+                <div class="package">
+                    <div class="package-name">Self-Setup</div>
+                    <div class="package-price">$199<span>/month</span></div>
+                    <p class="package-description">For entrepreneurs who want control over their OpenClaw system.</p>
+                    <ul class="package-features">
+                        <li>Complete OpenClaw installation</li>
+                        <li>Your own AI agent instance</li>
+                        <li>5 custom skills included</li>
+                        <li>Full tool integrations</li>
+                        <li>2-hour training session</li>
+                        <li>Monthly strategy call</li>
+                    </ul>
+                    <button class="btn btn-outline">Select Self-Setup</button>
+                </div>
+
+                <div class="package featured">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-name">Platinum Service</div>
+                    <div class="package-price">$2,499</div>
+                    <p class="package-description">Done-for-you service. We become your AI operations team.</p>
+                    <ul class="package-features">
+                        <li>Everything in Self-Setup</li>
+                        <li>Fully managed by our team</li>
+                        <li>Unlimited skill builds</li>
+                        <li>Weekly offer launches</li>
+                        <li>Same-day priority support</li>
+                        <li>Quarterly strategy sessions</li>
+                    </ul>
+                    <button class="btn btn-outline">Select Platinum</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING FORM -->
+        <section id="book" class="form-section">
+            <h2 class="form-title">Book Your Setup</h2>
+            <form>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" placeholder="John">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" placeholder="Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" placeholder="Your Company">
+                    </div>
+                    <div class="form-group">
+                        <label for="package">Package</label>
+                        <select id="package">
+                            <option>Select a package</option>
+                            <option>Self-Setup - $199/month</option>
+                            <option>Platinum Service - $2,499</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Tell us about your project</label>
+                        <textarea id="message" placeholder="What are you looking to achieve with OpenClaw?"></textarea>
+                    </div>
+                </div>
+
+                <div class="guarantee">
+                    <div class="guarantee-icon">🛡️</div>
+                    <div class="guarantee-content">
+                        <h4>7-Day Money-Back Guarantee</h4>
+                        <p>Not satisfied with your setup? We'll refund your investment, no questions asked.</p>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="max-width: 400px; margin: 0 auto; display: flex;">Book My Setup →</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+        <p>© 2026 Inbox Optin. Questions? Email erikburton@agentmail.to</p>
+    </footer>
+</body>
+</html>
